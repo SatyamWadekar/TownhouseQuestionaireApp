@@ -1,0 +1,48 @@
+﻿<CascadingValue Value="this">
+    <div id="@Id">
+        <div class="row">
+            <div class="col-1">
+                <button class="btn btn-dark-blue btn-lg" type="button" disabled="@(ActiveStepIx == 0)" @onclick="GoBack">
+                    &#8249;
+                </button>
+            </div>
+
+            <div class="col-10">
+                <ul class="nav nav-pills">
+                    @foreach (var step in Steps)
+                    {
+                    <li id="step-@(StepsIndex(step) + 1)" class="nav-item px-1">
+                        <a class="nav-link nav-dark-bg @((ActiveStep == step) ? "active" : " round px-3")"  
+                               href="javascript: void(0)" @onclick="@(e=> SetActive(step))">
+                                @((ActiveStep == step) ? step.Name : (StepsIndex(step) + 1).ToString())
+                           </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+            
+            <div class="col-1">
+                <button class="btn btn-dark-blue  btn-lg float-right" type="button" disabled="@(IsLastStep)" @onclick="GoNext">
+                    &#8250;
+                </button>
+            </div>
+
+        </div>
+            
+        <br />
+        
+        <div id="container-fluid">
+            @ChildContent
+        </div>
+    </div>
+    
+    <br />
+    <br />
+    @if (IsLastStep)
+    {
+        <button class="btn btn-dark-blue  btn-lg float-right" type="@(IsLastStep ? "submit" : "button")" @onclick="GoNext">
+            Submit
+        </button>
+    }
+    
+</CascadingValue>

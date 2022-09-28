@@ -1,0 +1,431 @@
+﻿@page "/ProjectQuestionnaire"
+
+<Wizard Id="ProjectQuestionnaireWizard">
+    <WizardStep Name="Instructions">
+        <br />
+    <h2><b>Instructions</b></h2><br>
+<label>
+    <b>Lender:</b> Complete the first table below and enter the date on which the form should be returned to you.
+    <br><br>
+    <b>Homeowners’ Association (HOA) or Management Company:</b> This form has been sent to you on behalf of an individual seeking
+    mortgage financing to purchase or refinance a unit in this project. The mortgage lender needs this information to determine the
+    eligibility of the project for mortgage financing purposes. Complete and return this form by <u><input class="transparentDateBox bottomBorder" type="date" placeholder="DATE"/></u> to the lender listed
+    below. Questions about this form should be directed to the lender contact.
+    <br>
+    <br>
+
+</label>
+
+<style>
+   
+    h2 {
+        font-family: 'Linux Libertine Display G';
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        /* width: 10%;*/
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        /*text-align: left;*/
+        /*padding: 3px;*/
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+</style>
+
+<table class="table table-striped">
+    <tr>
+        <td> Lender Name:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+        <td> Lender Phone Number:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+    </tr>
+    <tr>
+        <td> Contact Name:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+        <td> Lender Fax Number:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+    </tr>
+    <tr>
+        <td> Lender Address:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+        <td> Lender Email Address:</td>
+        <td>
+            <input type="text" class="transparentTextBox" />
+        </td>
+    </tr>
+
+</table>
+
+    </WizardStep>
+    <WizardStep Name="Basic Project Information">
+<div class="container-fluid">
+	<div>
+		<div class="btn-dark-blue">
+			<RadzenText class="rz-color-white" TextStyle="TextStyle.H4">Basic Project Info</RadzenText>
+		</div>
+		<table class="table table-striped my-3">
+			<tr>
+				<td><RadzenText TextStyle="TextStyle.Subtitle2">1   Project Legal Name:</RadzenText></td>
+				<td width="60%"><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+			</tr>
+
+			<tr>
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">2   Project Physical Address:</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td
+			</tr>
+
+		<tr>
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">3 HOA Management Address:</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+		</tr>
+		<tr class="py-2">
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">4 HOA Name (if different from Project Legal Name):</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+		</tr>
+		<tr class="py-2">
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">5 HOA Tax ID #:</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+			
+		</tr>
+		<tr class="py-2">
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">6 HOA Management Company Tax ID #:</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+			
+		</tr>
+		<tr class="py-2">
+			
+				<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">7 Name of Master or Umbrella Association (if applicable):</RadzenText></td>
+				<td><RadzenTextBox Change=@(args => OnChange(args, "TextBox")) Class="w-100" /></td>
+			
+		</tr>
+				<tr><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">8 Does the project contain any of the following? Check all that apply:</RadzenText></tr>
+				<RadzenCheckBoxList @bind-Value=@values TValue="int" Orientation="Orientation.Vertical">
+					<Items>
+						<tr><RadzenCheckBoxListItem Text="Hotel/motel/resort activities, mandatory or voluntary rental-pooling arrangements,
+							or other restrictions on the unit owner’s ability to occupy the unit" Value="1" /></tr>
+						<tr><RadzenCheckBoxListItem Text="Deed or resale restrictions" Value="2" /></tr>
+						<tr><RadzenCheckBoxListItem Text="Manufactured homes" Value="3" /></tr>
+						<tr><RadzenCheckBoxListItem Text="Mandatory fee-based memberships for use of project amenities or services" Value="4" /></tr>
+						<tr><RadzenCheckBoxListItem Text="Non-incidental income from business operations" Value="5" /></tr>
+						<tr><RadzenCheckBoxListItem Text="Supportive or continuing care for seniors or for residents with disabilities" Value="6" /></tr>
+					</Items>
+				</RadzenCheckBoxList>
+				<tr>
+					<td><RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Provide additional detail here, if applicable (optional):</RadzenText></td>
+					<td><RadzenTextArea @bind-Value=@value Cols="30" Rows="3" Change=@(args => OnChange(args, "TextArea")) Class="w-100" /></td>
+				</tr>
+		</table>
+	</div>
+</div>
+    </WizardStep>
+    <WizardStep Name="Project Completion Information">
+        <div>
+    <table class="table table-striped">
+        <tr>
+            <th class="text-white" colspan="4" style="background-color:#173045;"> II. Project Completion Information</th>
+        </tr>
+        <tr>
+            <td width="4%">
+                1
+            </td>
+            <td class="rightBorderTd" width="66%">
+                Is the project 100% complete, including all construction or renovation of units, common
+                elements, and shared amenities for all project phases?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="project_100_complete" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="project_100_complete" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">If <b>No</b>, complete lines a-f:</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>a</b> &emsp; Is the project subject to additional phasing or annexation?</td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="additional_phasing" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="additional_phasing" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>b</b> &emsp; Is the project legally phased?</td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="legally_phased" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="legally_phased" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>c</b> &emsp; How many phases have been completed?</td>
+            <td colspan="2" width="30%">
+                <input type="text" class="transparentTextBox" placeholder="text here"/>
+            </td>
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>d</b> &emsp; How many total phases are legally planned for the project? </td>
+            <td colspan="2" width="30%">
+                <input type="text" class="transparentTextBox" placeholder="text here"/>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>e</b> &emsp; How many total units are planned for the project?</td>
+            <td colspan="2" width="30%">
+                <input type="text" class="transparentTextBox" placeholder="text here" />
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>f</b> &emsp; Are all planned amenities and common facilities fully complete?</td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="fully_complete" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="fully_complete" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td width="4%">
+                2
+            </td>
+            <td class="rightBorderTd" width="66%">
+                Has the developer transferred control of the HOA to the unit owners?
+            </td>
+            <td width="30%" colspan="2">
+                <div class="row">
+                    <div class="col-6">
+
+                        <input type="checkbox" id="yes" name="transferred_control" value="yes">
+                    <label for="yes">Yes</label>
+                    </div>
+
+                    <div class="col-6">
+                    <label for="date">Date transferred:</label>
+                    <input class="transparentDateBox bottomBorder" type="date">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-6">
+                        <input type="checkbox" id="no" name="transferred_control" value="no">
+                    <label for="no">No</label>
+                    </div>
+                    <div class="col-6">
+                    <label for="date">
+                        Estimated date the
+                        transfer will occur:
+                    </label>
+                    <input class="transparentDateBox bottomBorder" type="date">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+    </WizardStep>
+    <WizardStep Name="Newly Converted or Rehabilitated Project Information">
+        <div>
+    <table class="table table-striped">
+        <tr>
+            <th class="text-white" colspan="4" style="background-color:#173045;"> III. Newly Converted or Rehabilitated Project Information</th>
+        </tr>
+        <tr>
+            <td width="4%">
+                1
+            </td>
+            <td class="rightBorderTd" width="66%">
+                Is the project a conversion within the past 3 years of an existing structure that was used
+                as an apartment, hotel/resort, retail or professional business, industrial or for other
+                non-residential use?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="project_a_conversion" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="project_a_conversion" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">If <b>Yes</b>, complete lines a-g:</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>a</b> &emsp; In what year was the property built?</td>
+            <td colspan="2" width="30%">
+                <input type="text" class="transparentTextBox" />
+            </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd"><b>b</b> &emsp; In what year was the property converted?</td>
+            <td colspan="2" width="30%">
+                <input type="text" class="transparentTextBox" />
+            </td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">
+                <b>c</b> &emsp; Was the conversion a full gut rehabilitation of the existing structure(s), including
+                replacement of all major mechanical components?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="rehabilitation" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="rehabilitation" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">
+                <b>d</b> &emsp; Does the report from the licensed engineer indicate that the project is structurally
+                sound, and that the condition and remaining useful life of the project’s major
+                components are sufficient?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="structurally_sound" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="structurally_sound" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">
+                <b>e</b> &emsp; Are all repairs affecting safety, soundness, and structural integrity complete?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="repairs_affecting" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="repairs_affecting" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">
+                <b>f</b> &emsp; Are replacement reserves allocated for all capital improvements?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="replacement_reserves" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="replacement_reserves" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="rightBorderTd">
+                <b>g</b> &emsp; Are the project’s reserves sufficient to fund the improvements?
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="yes" name="fund_the_improvements" value="yes">
+                <label for="yes">Yes</label>
+            </td>
+            <td width="15%">
+                <input type="checkbox" id="no" name="fund_the_improvements" value="no">
+                <label for="no">No</label>
+            </td>
+        </tr>
+    </table>
+</div>
+    </WizardStep>
+    <WizardStep Name="Financial Information">
+        <div class="row">
+      <p>The final step has been reached. Thank you \o/</p>
+        </div>
+    </WizardStep>
+    <WizardStep Name="Ownership & Other Information">
+        <div class="row">
+      <p>The final step has been reached. Thank you \o/</p>
+        </div>
+    </WizardStep>
+    <WizardStep Name="Insurance Information & Financial Controls">
+        <div class="row">
+      <p>The final step has been reached. Thank you \o/</p>
+        </div>
+    </WizardStep>
+    <WizardStep Name="Contact Information">
+        <div class="row">
+      <p>The final step has been reached. Thank you \o/</p>
+        </div>
+    </WizardStep>
+    <WizardStep Name="Condominium Project Questionnaire Addendum">
+        <div class="row">
+      <p>The final step has been reached. Thank you \o/</p>
+        </div>
+    </WizardStep>
+</Wizard>
+
+@code {
+    
+	string value;
+	IEnumerable<int> values = new int[] { 1 };
+
+	private string _currentState;
+
+	void OnChange(string value, string name)
+	{
+		_currentState = String.Format($"{name} value changed to {value}");
+		this.StateHasChanged();
+	}
+	void OnChange(string value)
+	{
+		_currentState = String.Format("value changed to {value}");
+		this.StateHasChanged();
+	}
+}
